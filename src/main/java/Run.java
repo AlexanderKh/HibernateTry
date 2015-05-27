@@ -20,8 +20,14 @@ public class Run {
         List<Student> studentList = criteria.list();
         for (Student student : studentList){
             System.out.println(student.toString());
-            System.out.println(student.getExams().toString());
-            System.out.println();
+            float sum = 0;
+            for (Exam exam : student.getExams()){
+                System.out.println(exam);
+                sum += exam.getMark();
+            }
+            sum = sum / student.getExams().size();
+            System.out.println("Average mark: " + sum);
+            System.out.println("------------");
         }
         session.close();
         factory.close();
