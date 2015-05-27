@@ -15,6 +15,7 @@
 
         <!-- Mapping files -->
         <mapping class="entity.Student"/>
+        <mapping class="entity.Exam"/>
 
     </session-factory>
 </hibernate-configuration>

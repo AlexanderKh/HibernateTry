@@ -1,6 +1,10 @@
 package entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
@@ -9,11 +13,11 @@ public class Student {
     private int id;
     private String firstName;
     private String lastName;
-    private int mark;
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Exam> exams;
 
 
-    public Student() {
-    }
 
     public int getId() {
         return id;
@@ -39,17 +43,17 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public int getMark() {
-        return mark;
+    public List<Exam> getExams() {
+        return exams;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+    public void setExams(List<Exam> exams) {
+        this.exams = exams;
     }
 
     @Override
     public String toString(){
-        return firstName + " " + lastName + " " + mark;
+        return firstName + " " + lastName;
     }
 
 }

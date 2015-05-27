@@ -1,8 +1,12 @@
+import entity.Exam;
 import entity.Student;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+
+import java.util.List;
 
 public class Run {
 
@@ -12,14 +16,15 @@ public class Run {
         applySettings(configuration.getProperties());
         SessionFactory factory = configuration.buildSessionFactory(builder.build());
         Session session = factory.openSession();
-        session.beginTransaction();
-        Student student = new Student();
-        student.setFirstName("petrov");
-        student.setLastName("vetal");
-        student.setMark(12);
-        session.save(student);
-        session.getTransaction().commit();
+        Criteria criteria = session.createCriteria(Student.class);
+        List<Student> studentList = criteria.list();
+        for (Student student : studentList){
+            System.out.println(student.toString());
+            System.out.println(student.getExams().toString());
+            System.out.println();
+        }
         session.close();
+        factory.close();
     }
 
 }
