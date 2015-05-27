@@ -12,8 +12,13 @@ public class Run {
         applySettings(configuration.getProperties());
         SessionFactory factory = configuration.buildSessionFactory(builder.build());
         Session session = factory.openSession();
-        System.out.println(session.createCriteria(Student.class).list());
-
+        session.beginTransaction();
+        Student student = new Student();
+        student.setFirstName("petrov");
+        student.setLastName("vetal");
+        student.setMark(12);
+        session.save(student);
+        session.getTransaction().commit();
         session.close();
     }
 

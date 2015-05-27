@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "students")
@@ -13,6 +10,10 @@ public class Student {
     private String firstName;
     private String lastName;
     private int mark;
+
+
+    public Student() {
+    }
 
     public int getId() {
         return id;
@@ -46,6 +47,9 @@ public class Student {
         this.mark = mark;
     }
 
-
+    @Override
+    public String toString(){
+        return firstName + " " + lastName + " " + mark;
+    }
 
 }
