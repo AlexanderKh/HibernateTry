@@ -14,7 +14,7 @@ public class Student {
     private String firstName;
     private String lastName;
     @OneToMany
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "student_id")
     private List<Exam> exams;
 
 

@@ -48,6 +48,6 @@ public class Exam {
 
     @Override
     public String toString(){
-        return title + mark;
+        return title + " " + mark;
     }
 }
