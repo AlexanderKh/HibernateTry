@@ -26,5 +26,4 @@ public class Run {
         session.close();
         factory.close();
     }
-
 }
